@@ -1,15 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+      <h2>Garena-demo</h2>
+      <h3>姓名：{{obj.name}}</h3>
+      <h3>面试日期：2022/04/27</h3>
+      <div>
+
+      </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return {
+      obj:{}
+    }
+  },
+  methods: {
+    
+  },
+  created(){
+    //获取本地json数据
+    var xhr=new XMLHttpRequest();
+    xhr.open("get","./config.json",false);
+    xhr.send()
+    var obj=xhr.responseText;
+    this.obj=JSON.parse(obj);
   }
 }
 </script>
